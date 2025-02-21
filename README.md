@@ -1,3 +1,3 @@
-# Intake A.I. Application
+# App Template
 
 Template for web application
