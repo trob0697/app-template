@@ -1,0 +1,30 @@
+name: CI/CD Pipeline - Frontend
+
+on:
+  push:
+    branches-ignore:
+      - master
+    paths:
+      - "frontend/**"
+  pull_request:
+    branches-ignore:
+      - master
+    paths:
+      - "frontend/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run CSpell
+        run: npx cspell "**"
+      - name: Run Linting
+        run: npx eslint
+      - name: Run Tests
+        run: cd ./frontend && npm run test

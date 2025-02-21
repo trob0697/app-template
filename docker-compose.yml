@@ -1,0 +1,43 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: next-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+    env_file:
+      - ./.env
+    environment:
+      ENV: "DEVELOPMENT"
+
+  backend:
+    build: ./backend
+    container_name: express-backend
+    restart: always
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend/src:/app/src
+    env_file:
+      - ./.env
+    environment:
+      ENV: "DEVELOPMENT"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

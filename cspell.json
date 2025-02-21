@@ -1,0 +1,25 @@
+{
+  "ignorePaths": [
+    "*/node_modules/**",
+    "*/.next/**",
+    "./terraform/.terraform/*",
+    "./terraform/.terraform.lock.hcl",
+    "./terraform/terraform.tfstate",
+    "terraform/terraform.tfstate.backup"
+  ],
+  "words": [
+    "authuser",
+    "buildx",
+    "cloudsql",
+    "decrpyt",
+    "gcsm",
+    "ngronk",
+    "secretmanager",
+    "sqladmin",
+    "tahreak",
+    "tfstate",
+    "trivago",
+    "tseslint",
+    "visualstudio"
+  ]
+}
